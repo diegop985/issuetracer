@@ -50,39 +50,33 @@ btnCreateIssue.onclick = () => {
     `
 
     container.appendChild(createIssueDiv)
-
+    validarForm()
     } 
 
 }
 
 
-if (createIssueDiv.childNodes.length != 0) {
-    console.log(validarForm)
- validarForm.onclick = (e) => {
-     console.log(e)
-     e.preventDefault()
-
-    const myFormIssue = document.getElementById("createIssueForm")
-    
-    myFormIssue.addEventListener("submit", validarForm)
-
-    let form = e.target
 
 
-    const issueNuevo = new Issue({
-        issueName: form.querySelector(".createIssueTitle").value,
-        issueDescription: form.querySelector(".createIssueDescription").value,
-        issueCategory: form.querySelector(".createIssueTypes").value,
-        issueAssigne: form.querySelector(".createIssueAssignDev").value,
-        issuePriority: form.querySelector(".createIssuePriority").value,
+const validarForm = () => {
+    if (createIssueDiv.childNodes.length != 0)  {
+        submitIssueBtn = document.getElementById("createIssueSubmitBtn")
+        submitIssueBtn.onclick = (e) => {
+            e.preventDefault() //Previene que se actualice
+            console.log(e)
 
-    })
-    
-    console.log(issueNuevo)
+            const myForm = document.getElementById("createIssueForm")
+            
+            const issueNuevo = new Issue ({
 
-    issuesArray.push(issueNuevo)
-    console.log(issuesArray)
+                issueName: myForm.querySelector("#createIssueTitle").value,
+                issueDescription: myForm.querySelector("#createIssueDescription").value,
+                issueCategory: myForm.querySelector("#createIssueTypes").value,
+                issueAssigne: myForm.querySelector("#createIssueAssignDev").value,
+                issuePriority: myForm.querySelector("#createIssuePriority").value
+            })
+
+            issuesArray.push(issueNuevo)
+        }
+    }
 }
-
-}
-//con jQuery llamamos al element por class y luego accedemos a su valor para agregarselo al key de la nueva instancia del issue que agregamos al array
