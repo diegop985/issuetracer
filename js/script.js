@@ -8,10 +8,10 @@ let createIssueDiv = document.createElement("div")
 
 createIssueDiv.className = "dinamicContainer"
 
-btnCreateIssue.onclick = () => {
-    
 
-    if (createIssueDiv.childNodes.length == 0) {
+btnCreateIssue.onclick = () => {
+    deleteAndCreate()
+    if (createIssueDiv.childNodes.length !=1) {
         createIssueDiv.innerHTML = `
         <div class="formContainer">
                     <h1>Create Issue</h1>
@@ -41,8 +41,8 @@ btnCreateIssue.onclick = () => {
                         <select name="issueTypes" id="createIssuePriority" class="createIssuePriority">
                             <option value="">-- Select Type ---</option>
                             <option value="High">High</option>
-                            <option value="Low">Low</option>
-                            <option value="task">Task</option>
+                            <option value="Low">Medium</option>
+                            <option value="task">Low</option>
                         </select>    
                         <input type="submit" class="createIssueSubmitBtn" id="createIssueSubmitBtn" value="Create">
                     </form>
@@ -51,12 +51,10 @@ btnCreateIssue.onclick = () => {
 
     container.appendChild(createIssueDiv)
     validarForm()
+    
     } 
 
 }
-
-
-
 
 const validarForm = () => {
     
@@ -79,6 +77,9 @@ const validarForm = () => {
             })
             //Agregamos obj a array de objetos
             issuesArray.push(issueNuevo)
+            const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
+            guardarLocal("listadeIssues", JSON.stringify(issuesArray));
+
 
             //Alerta de creación exitosa
             Swal.fire({
@@ -101,3 +102,63 @@ const validarForm = () => {
     
 }
 
+
+
+//Function para mostrar issues :D
+myIssuesBtn.onclick = () => {
+    lsToObj()
+    deleteAndCreate()
+    
+    let showIssueDiv = document.createElement("div") 
+
+    showIssueDiv.className = "showIssueDiv"
+
+    showIssueDiv.innerHTML= `
+        <h1>My Issues</h1><br>
+        <hr>
+        <div class="showIssueRow">
+            <p>Name</p>
+            <p>Description</p>
+            <p>Category</p>
+            <p>Dev Assigned</p>
+            <p>Priority</p>
+        </div>
+        <div class="issuesDiv" id="issuesDiv"></div>
+    `
+
+    let issueRow = showIssueDiv.querySelector("#issuesDiv")
+    
+
+    for (let obj in showIssuesArray) {
+        console.log(showIssuesArray[obj].issueName)
+        issueRow.innerHTML+=`
+            <div class="issueRow">
+            <p>${showIssuesArray[obj].issueName}</p>
+            <p>${showIssuesArray[obj].issueDescription}</p>
+            <p>${showIssuesArray[obj].issueCategory}</p>
+            <p>${showIssuesArray[obj].issueAssigne}</p>
+            <p>${showIssuesArray[obj].issuePriority}</p>
+            </div>
+        `
+    }
+    container.appendChild(showIssueDiv)
+}
+
+
+//Function transformar local storage a objs
+function lsToObj () {
+    const almacenados = JSON.parse(localStorage.getItem("listadeIssues"))
+
+    showIssuesArray = []
+
+    for (const objeto of almacenados) {
+        showIssuesArray.push(new Issue(objeto))
+    }
+}
+
+//Funcion para limpiar contenido del container main section
+const deleteAndCreate = () => {
+    if (container.children.length != 0) {
+        container.innerHTML=""
+    }
+}
