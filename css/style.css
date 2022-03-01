@@ -1,0 +1,288 @@
+/* Meta sets */
+@import url("http://fonts.cdnfonts.com/css/helvetica-neue-9");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Helvetica 35 Thin", sans-serif;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+/* Header general settings*/
+
+.nav-bar {
+  width: 100%;
+  font-size: 1.8rem;
+  background-color: #f7f7f9;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  z-index: 0;
+}
+
+.nav-container {
+  width: 100%;
+  height: 6.4rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Header elements settings */
+
+/* left side */
+i {
+  font-size: 2.2rem;
+}
+
+.left-navbar i {
+  padding-left: 30px;
+  font-size: 4rem;
+}
+
+.left-navbar {
+  display: flex;
+  width: 40%;
+  align-items: center;
+}
+.text-navbar {
+  padding-left: 30px;
+}
+
+.text1-navbar {
+  font-size: 1.5rem;
+}
+
+.text2-navbar {
+  font-size: 1.8rem;
+}
+
+/* right side */
+.navbar-icons {
+  width: 80rem;
+  display: flex;
+  justify-content: end;
+}
+
+.right-navbar {
+  justify-content: space-around;
+  display: flex;
+  width: 70%;
+  align-items: center;
+}
+
+.nav-search {
+  display: flex;
+  align-items: center;
+}
+
+.nav-search input {
+  height: 2.7rem;
+  margin-right: 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 6px;
+}
+
+.nav-search i {
+  font-size: 2rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1.6rem;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+/* Sidebar */
+
+/* The sidebar menu */
+.sidebar {
+  padding: 2.5rem;
+  height: 100%;
+  width: 24rem;
+  /* position: absolute; */
+  left: 0;
+  background-color: #f7f7f9;
+  overflow-x: hidden;
+  z-index: -1;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.sidebar-container {
+  height: 50rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar elements  */
+
+.sidebar-container p {
+  font-size: 1.5rem;
+}
+
+.sidebar-container span {
+  font-size: 2rem;
+}
+
+.sidebar-container .btn-dashboard {
+  margin: 40px 0 0 0;
+  padding: 1rem;
+}
+
+.sidebar-navs {
+  display: flex;
+  justify-content: left;
+  padding: 30px 0 0 0;
+  width: 16rem;
+  align-items: center;
+}
+
+.sidebar-container i {
+  font-size: 1.7rem;
+  margin-right: 20px;
+  width: 1rem;
+}
+
+.sidebar-container a {
+  text-decoration: none;
+  font-size: 1.7rem;
+  color: black;
+}
+
+/* <---- main section/ js mostly------> */
+
+.main-content {
+  width: 100%;
+  height: 70rem;
+  padding: 35px 50px;
+}
+
+.main-container {
+  height: 100%;
+  font-family: "Helvetica 35 Thin", sans-serif;
+  font-weight: 400;
+}
+
+.main-container h1 {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+.stroke {
+  width: 100%;
+  margin: 10px 0 10px 0;
+  height: 1px;
+  background: rgb(129, 128, 128);
+}
+
+/* FORM CREATE ISSUE */
+
+.dinamicContainer {
+  width: 100%;
+  height: 75rem;
+}
+
+.formContainer {
+  width: 60rem;
+  border-radius: 15px;
+  height: 100%;
+  padding: 20px;
+  margin: auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.formContainer form {
+  width: fit-content;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: auto;
+}
+
+.formContainer form label {
+  align-items: left;
+  font-size: 2rem;
+}
+
+.formContainer form textarea {
+  font-family: "Helvetica 45 Light", sans-serif;
+  padding: 10px;
+}
+
+.formContainer form input,
+select,
+textarea {
+  width: 40rem;
+  font-size: 1.8;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #d0d4da;
+}
+.formContainer form input:hover,
+select:hover,
+textarea:hover {
+  border: 1px solid #93bded;
+}
+
+.formContainer form input:focus,
+select:focus,
+textarea:focus {
+  outline: #93bded;
+  box-shadow: 1px 7px 10px -5px rgb(90 116 148 / 30%);
+}
+
+.formContainer form input,
+select {
+  height: 3.5rem;
+}
+
+.formContainer form .createIssuesubmitBtn {
+  width: 20rem;
+}
+
+.formContainer form .createIssuesubmitBtn {
+  border: none;
+  background: #007bff;
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+  margin-left: 2px;
+}
+
+.formContainer form .createIssuesubmitBtn:focus {
+  background: #4f9cee;
+  width: 20.5rem;
+  height: 4.05;
+  transition: width 0.5s, height 0.5s, transform 0.5;
+}
+
+.formContainer form option {
+  font-size: 1.6rem;
+  color: rgb(75, 70, 70);
+}
+
+.formContainer form option {
+  font-size: 1.6rem;
+}
