@@ -286,3 +286,8 @@ select {
 .formContainer form option {
   font-size: 1.6rem;
 }
+
+.sweetalert-lg {
+  height: auto;
+  width: auto;
+}

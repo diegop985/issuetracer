@@ -59,7 +59,9 @@ btnCreateIssue.onclick = () => {
 
 
 const validarForm = () => {
+
     if (createIssueDiv.childNodes.length != 0)  {
+
         submitIssueBtn = document.getElementById("createIssueSubmitBtn")
         submitIssueBtn.onclick = (e) => {
             e.preventDefault() //Previene que se actualice
@@ -77,6 +79,16 @@ const validarForm = () => {
             })
 
             issuesArray.push(issueNuevo)
+
+            Swal.fire({
+                position: "top-end",
+                title: 'Your Issue Has Been Created Succesfully!',
+                timer: 1500,
+                icon: 'success',
+                showConfirmButton: false,
+                customClass: 'sweetalert-lg'
+              })
         }
     }
 }
+
