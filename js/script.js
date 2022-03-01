@@ -59,16 +59,16 @@ btnCreateIssue.onclick = () => {
 
 
 const validarForm = () => {
+    
+    const myForm = document.getElementById("createIssueForm")
 
     if (createIssueDiv.childNodes.length != 0)  {
 
         submitIssueBtn = document.getElementById("createIssueSubmitBtn")
         submitIssueBtn.onclick = (e) => {
             e.preventDefault() //Previene que se actualice
-            console.log(e)
 
-            const myForm = document.getElementById("createIssueForm")
-            
+            //Instanciamos el nuevo objeto issue con la info puesta en el issue form
             const issueNuevo = new Issue ({
 
                 issueName: myForm.querySelector("#createIssueTitle").value,
@@ -77,9 +77,10 @@ const validarForm = () => {
                 issueAssigne: myForm.querySelector("#createIssueAssignDev").value,
                 issuePriority: myForm.querySelector("#createIssuePriority").value
             })
-
+            //Agregamos obj a array de objetos
             issuesArray.push(issueNuevo)
 
+            //Alerta de creación exitosa
             Swal.fire({
                 position: "top-end",
                 title: 'Your Issue Has Been Created Succesfully!',
@@ -88,7 +89,15 @@ const validarForm = () => {
                 showConfirmButton: false,
                 customClass: 'sweetalert-lg'
               })
+
+              //Limpiamos el form
+              myForm.querySelector("#createIssueTitle").value = ""
+              myForm.querySelector("#createIssueDescription").value = ""
+              myForm.querySelector("#createIssueTypes").value = ""
+              myForm.querySelector("#createIssueAssignDev").value = ""
+              myForm.querySelector("#createIssuePriority").value = ""
         }
     }
+    
 }
 
