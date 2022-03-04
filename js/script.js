@@ -1,18 +1,18 @@
-
 // Create Issue
-
 // Display Issue form
-
-
+let showIssueDiv = document.createElement("div") 
 let createIssueDiv = document.createElement("div") 
-
+let showIssuesArray;
 createIssueDiv.className = "dinamicContainer"
 
 
 btnCreateIssue.onclick = () => {
-    deleteAndCreate()
-    if (createIssueDiv.childNodes.length !=1) {
-        createIssueDiv.innerHTML = `
+    showIssueDiv.classList.remove("mostrar")
+    showIssueDiv.classList.add("ocultar")
+    createIssueDiv.classList.add("mostrar")
+    if (createIssueDiv.childNodes.length == 0) {
+        
+        createIssueDiv.innerHTML = ` 
         <div class="formContainer">
                     <h1>Create Issue</h1>
                     <div class="stroke"></div>
@@ -48,14 +48,13 @@ btnCreateIssue.onclick = () => {
                     </form>
                 </div>
     `
-
     container.appendChild(createIssueDiv)
     validarForm()
+    
     
     } 
 
 }
-
 const validarForm = () => {
     
     const myForm = document.getElementById("createIssueForm")
@@ -107,11 +106,14 @@ const validarForm = () => {
 //Function para mostrar issues :D
 myIssuesBtn.onclick = () => {
     lsToObj()
-    deleteAndCreate()
-    
-    let showIssueDiv = document.createElement("div") 
+    createIssueDiv.classList.remove("mostrar")
+    createIssueDiv.classList.add("ocultar")
+    showIssueDiv.classList.add("mostrar")
 
     showIssueDiv.className = "showIssueDiv"
+
+    
+    if(showIssuesArray.length != 0){
 
     showIssueDiv.innerHTML= `
         <h1>My Issues</h1><br>
@@ -125,6 +127,8 @@ myIssuesBtn.onclick = () => {
         </div>
         <div class="issuesDiv" id="issuesDiv"></div>
     `
+
+    
 
     let issueRow = showIssueDiv.querySelector("#issuesDiv")
     
@@ -141,24 +145,50 @@ myIssuesBtn.onclick = () => {
             </div>
         `
     }
+    
     container.appendChild(showIssueDiv)
+    
+    }
+    
+    /* } */
 }
+
+
 
 
 //Function transformar local storage a objs
 function lsToObj () {
     const almacenados = JSON.parse(localStorage.getItem("listadeIssues"))
 
-    showIssuesArray = []
+    /* console.log(almacenados) */
 
-    for (const objeto of almacenados) {
-        showIssuesArray.push(new Issue(objeto))
+    if(almacenados === null){
+        showIssuesArray = []  
+        showIssueDiv.innerHTML= `
+        <h1>There are no issues in the table</h1>
+    `
+    container.appendChild(showIssueDiv)
+    }else{
+        showIssuesArray = [];
+        for (const objeto of almacenados) {
+            showIssuesArray.push(new Issue(objeto))
+        }
     }
+    
+    
+    
+    
+
+    
+
+    
+    
+    
 }
 
 //Funcion para limpiar contenido del container main section
-const deleteAndCreate = () => {
+/* const deleteAndCreate = () => {
     if (container.children.length != 0) {
         container.innerHTML=""
     }
-}
+} */

@@ -176,6 +176,11 @@ i {
   width: 100%;
   height: 70rem;
   padding: 35px 50px;
+  overflow-y: auto;
+}
+
+section {
+  margin-bottom: 9rem;
 }
 
 .main-container {
@@ -188,6 +193,14 @@ i {
   font-family: "Helvetica Neue", sans-serif;
   font-size: 2.6rem;
   font-weight: 700;
+}
+
+.ocultar {
+  display: none;
+}
+
+.mostrar {
+  display: block;
 }
 
 .stroke {
